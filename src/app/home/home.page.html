@@ -3,12 +3,18 @@
     <ion-title>
       G00439376
     </ion-title>
+    <ion-buttons slot="end"><!-- put icons to the end of the row -->
+      <ion-button [routerLink]="['/favourites']">
+        <ion-icon name="heart"></ion-icon>
+      </ion-button>
+      <ion-button [routerLink]="['/settings']">
+        <ion-icon name="settings"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
- <ion-searchbar placeholder="Enter ingredients"></ion-searchbar>
-  <ion-button >Search</ion-button> 
+  <ion-searchbar placeholder="Enter ingredients"></ion-searchbar>
+  <ion-button>Search</ion-button>
 </ion-content>
-
-
