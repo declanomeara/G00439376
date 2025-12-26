@@ -5,13 +5,9 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Display Receipe Measurements In</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-radio-group value="metric">
-  <ion-radio value="metric">Metric</ion-radio><br />
-  <ion-radio value="us">US</ion-radio><br />
+  <p>Display Receipe Measurements In:</p>
+  <ion-radio-group [(ngModel)]="measureType" (ionChange)="setSelected()">
+  <ion-radio  value="metric" >Metric</ion-radio><br />
+  <ion-radio  value="us">US</ion-radio><br />
 </ion-radio-group>
 </ion-content>
