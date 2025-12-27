@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonButton, IonButtons, IonIcon, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';//allows to add only the icons I need
 import { heart, settings } from 'ionicons/icons';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MyDataService } from '../services/my-data.service';
 import { MyHttpService } from '../services/my-http.service';
 import { HttpOptions } from '@capacitor/core';
@@ -25,7 +25,7 @@ export class HomePage {
     url: "https://api.spoonacular.com/recipes/complexSearch?query=" 
   }
  
-  constructor(private ds: MyDataService, private mhs: MyHttpService,) {
+  constructor(private ds: MyDataService, private mhs: MyHttpService, private router: Router ) {
      addIcons({ heart, settings }/*get icons on creation of page*/) ;
   }
 
@@ -34,5 +34,10 @@ export class HomePage {
     this.optionsSearch.url= this.optionsSearch.url.concat(this.ingredientRequest) + this.apiKey;
     let result = await this.mhs.get(this.optionsSearch);
     this.recipeInfo = result.data.results;
+  }
+
+  viewRecipeDetails(id:number){
+    this.ds.set('selectedRecipeId', id);
+    this.router.navigate(['recipe-details']);
   }
 }

@@ -23,8 +23,6 @@
     <ion-card-header>
       <ion-card-title>{{recipe.title}}</ion-card-title>
     </ion-card-header>
-    <ion-button>Details</ion-button> 
+    <ion-button (click)="viewRecipeDetails(recipe.id)">Details</ion-button> 
   </ion-card>
-  
-
 </ion-content>
