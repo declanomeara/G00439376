@@ -15,6 +15,16 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-searchbar placeholder="Enter ingredients"></ion-searchbar>
-  <ion-button>Search</ion-button>
+  <ion-searchbar placeholder="Enter ingredients" [(ngModel)]="ingredientRequest"></ion-searchbar>
+  <ion-button (click)="getReceipesByIngredients()">Search</ion-button>
+
+  <ion-card *ngFor="let recipe of recipeInfo">
+    <img src="{{recipe.image}}" />
+    <ion-card-header>
+      <ion-card-title>{{recipe.title}}</ion-card-title>
+    </ion-card-header>
+    <ion-button>Details</ion-button> 
+  </ion-card>
+  
+
 </ion-content>
