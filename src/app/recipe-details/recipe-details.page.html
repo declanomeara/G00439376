@@ -63,4 +63,14 @@
     </p>
 
   </ng-container>
+  <ion-button (click)="toggleFavourite()">
+
+  <ion-icon
+    slot="start"
+    [name]="isFavourite ? 'heart' : 'heart-outline'">
+  </ion-icon>
+
+  {{ isFavourite ? 'Remove from Favourites' : 'Add to Favourites' }}
+
+</ion-button>
 </ion-content>
