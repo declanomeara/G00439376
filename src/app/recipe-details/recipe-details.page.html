@@ -1,14 +1,66 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>recipe-details</ion-title>
+    <ion-title>{{ recipeDetail?.title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">recipe-details</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  {{recipeId}}
+<ion-content fullscreen>
+
+  <!-- Guard: only render once data is available -->
+  <ng-container *ngIf="recipeDetail">
+
+    <!-- INGREDIENTS -->
+    <h2>Ingredients</h2>
+
+    <ion-card *ngFor="let ingredient of recipeDetail.extendedIngredients">
+
+      <!-- Ingredient Image -->
+      <ion-img
+        [src]="'https://spoonacular.com/cdn/ingredients_250x250/' + ingredient.image"  class="ingredient-img">
+     </ion-img>
+
+      <!-- Ingredient Name -->
+      <ion-card-header>
+        <ion-card-subtitle>{{ ingredient.original }}</ion-card-subtitle>
+      </ion-card-header>
+
+      <!-- Measurements -->
+      <ion-card-content>
+        <!-- Metric -->
+        <p *ngIf="measureType === 'metric'">
+          {{ ingredient.measures.metric.amount }}
+          {{ ingredient.measures.metric.unitLong }}
+        </p>
+
+        <!-- US -->
+        <p *ngIf="measureType === 'us'">
+          {{ ingredient.measures.us.amount }}
+          {{ ingredient.measures.us.unitLong }}
+        </p>
+
+      </ion-card-content>
+    </ion-card>
+
+    <!-- INSTRUCTIONS -->
+    <h2>Instructions</h2>
+
+    <ion-list *ngIf="recipeDetail.analyzedInstructions?.length > 0">
+
+      <ion-item
+        *ngFor="let step of recipeDetail.analyzedInstructions[0].steps">
+
+        <ion-label>
+          <h3>Step {{ step.number }}</h3>
+          <p>{{ step.step }}</p>
+        </ion-label>
+
+      </ion-item>
+    </ion-list>
+
+    <!-- Default if no instructions -->
+    <p *ngIf="recipeDetail.analyzedInstructions?.length === 0">
+      No instructions available.
+    </p>
+
+  </ng-container>
 </ion-content>

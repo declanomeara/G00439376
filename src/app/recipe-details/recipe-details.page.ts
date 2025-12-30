@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonList, IonItem, IonThumbnail, IonLabel, IonCardTitle, IonCardSubtitle, IonCardContent, IonImg } from '@ionic/angular/standalone';
 import { MyDataService } from '../services/my-data.service';
 import { MyHttpService } from '../services/my-http.service';
 import { HttpOptions } from '@capacitor/core';
@@ -11,7 +11,7 @@ import { HttpOptions } from '@capacitor/core';
   templateUrl: './recipe-details.page.html',
   styleUrls: ['./recipe-details.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonContent, CommonModule, FormsModule, IonList, IonItem, IonLabel, IonCard, IonCardHeader, IonCardSubtitle, IonCardContent, IonImg, IonHeader, IonToolbar, IonTitle]
 })
 export class RecipeDetailsPage implements OnInit {
 
@@ -34,6 +34,7 @@ export class RecipeDetailsPage implements OnInit {
   async getRecipeDetail(){
     this.recipeId = await this.ds.get('selectedRecipeId');
     this.measureType = await this.ds.get('measureType');
+    this.measureType = this.measureType ?? 'metric';
 
     this.optionsRecipeDetails.url = this.optionsRecipeDetails.url.concat(this.recipeId) + "/information" + this.apiKey
     
