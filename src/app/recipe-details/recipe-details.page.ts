@@ -8,7 +8,6 @@ import { HttpOptions } from '@capacitor/core';
 import { addIcons } from 'ionicons';//allows to add only the icons I need
 import { heart, heartOutline } from 'ionicons/icons';
 
-
 @Component({
   selector: 'app-recipe-details',
   templateUrl: './recipe-details.page.html',
@@ -16,7 +15,7 @@ import { heart, heartOutline } from 'ionicons/icons';
   standalone: true,
   imports: [IonContent, CommonModule, FormsModule, IonList, IonItem, IonLabel, IonCard, IonCardHeader, IonCardSubtitle, IonCardContent, IonImg, IonHeader, IonToolbar, IonTitle, IonButton, IonIcon]
 })
-export class RecipeDetailsPage implements OnInit {
+export class RecipeDetailsPage {
 
   recipeId!: string;
   apiKey: string = "?apiKey=70759a4f7911402abcc53d3c51d3b759";
@@ -33,7 +32,7 @@ export class RecipeDetailsPage implements OnInit {
     addIcons({ heart, heartOutline });
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.getRecipeDetail();
 
   }
