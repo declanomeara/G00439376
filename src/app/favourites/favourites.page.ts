@@ -12,17 +12,14 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonCardHeader, IonButton, IonCardTitle]
 })
-export class FavouritesPage implements OnInit {
+export class FavouritesPage  {
   
   favourites: any[] =[];
 
   constructor(private ds: MyDataService, private router: Router) { }
 
-  ngOnInit() {
-    this.getFavourites();
-  }
-
-  async getFavourites(){//get favourites from storage or return an empty array
+  async ionViewWillEnter() {
+    //get favourites from storage or return an empty array
     this.favourites = await this.ds.get('favourites') ?? [];
   }
 
