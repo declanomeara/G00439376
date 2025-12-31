@@ -13,7 +13,7 @@ export class MyDataService {
     }
 
     async init(){
-      await this.storage.create(); //from storage
+      await this.storage.create();
     }
 
     async get(key:string){
