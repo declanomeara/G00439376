@@ -23,7 +23,7 @@ export class HomePage {
 
   optionsSearch: HttpOptions ={ 
     url: "https://api.spoonacular.com/recipes/complexSearch?query=" 
-  }
+  };
  
   constructor(private ds: MyDataService, private mhs: MyHttpService, private router: Router ) {
      addIcons({ heart, settings }/*get icons on creation of page*/) ;
@@ -31,9 +31,13 @@ export class HomePage {
 
   async getReceipesByIngredients(){
   
-    this.optionsSearch.url= this.optionsSearch.url.concat(this.ingredientRequest) + this.apiKey;
+    //reset after every api call + make ingredients url safe
+    this.optionsSearch.url= 'https://api.spoonacular.com/recipes/complexSearch?query=' + encodeURIComponent(this.ingredientRequest) + this.apiKey;
+    
     let result = await this.mhs.get(this.optionsSearch);
-    this.recipeInfo = result.data.results;
+
+    //if any element of chaining is undefined or missing,  return an empty array
+    this.recipeInfo = result?.data?.results?? [];
   }
 
   viewRecipeDetails(id:number){
