@@ -30,6 +30,11 @@ export class HomePage {
   }
 
   async getReceipesByIngredients(){
+
+    if(!this.ingredientRequest || this.ingredientRequest.trim()=== ""){
+      this.recipeInfo = [];
+      return;
+    }
   
     //reset after every api call + make ingredients url safe
     this.optionsSearch.url= 'https://api.spoonacular.com/recipes/complexSearch?query=' + encodeURIComponent(this.ingredientRequest) + this.apiKey;
