@@ -57,8 +57,8 @@ export class RecipeDetailsPage {
     this.favourites = await this.ds.get('favourites') ?? [];
 
     //check to see it current recipe is already a favourite
-    for (let fav of this.favourites) {
-      if (fav.id === this.recipeDetail.id) {
+    for (let favRecipe of this.favourites) {
+      if (favRecipe.id === this.recipeDetail.id) {
         this.isFavourite = true;
         break;
       }
@@ -70,7 +70,7 @@ export class RecipeDetailsPage {
     if (this.isFavourite) {
     // If favourite already remove as favourite create a new array
     this.favourites = this.favourites.filter(
-      fav => fav.id !== this.recipeDetail.id
+      favRecipe => favRecipe.id !== this.recipeDetail.id
     );
   } else {
     //add as favourite if not favourire already

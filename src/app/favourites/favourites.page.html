@@ -1,17 +1,17 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>favourites</ion-title>
+    <ion-title>Favourite Recipies</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   
-  <ion-card *ngFor="let fav of favourites">
-    <img src="{{fav.image}}" alt="{{fav.title}}"/>
+  <ion-card *ngFor="let favRecipe of favourites">
+    <img src="{{favRecipe.image}}" alt="{{favRecipe.title}}"/>
     <ion-card-header>
-      <ion-card-title>{{fav.title}}</ion-card-title>
+      <ion-card-title>{{favRecipe.title}}</ion-card-title>
     </ion-card-header>
-    <ion-button (click)="viewDetails(fav)">Details</ion-button> 
+    <ion-button (click)="viewDetails(favRecipe)">Details</ion-button> 
   </ion-card>
 
   <p *ngIf="favourites.length === 0">
