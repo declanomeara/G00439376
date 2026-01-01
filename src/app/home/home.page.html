@@ -16,8 +16,11 @@
 
 <ion-content [fullscreen]="true">
   <ion-searchbar placeholder="Enter ingredients" [(ngModel)]="ingredientRequest"></ion-searchbar>
-  <ion-button (click)="getReceipesByIngredients()">Search</ion-button>
   
+  <div class ="search-button-wrapper">
+    <ion-button (click)="getReceipesByIngredients()">Search</ion-button>
+  </div>
+
   <!-- LOADING SPINNER -->
 <div *ngIf="isLoading" style="text-align:center; margin-top:20px;">
   <ion-spinner name="crescent"></ion-spinner>
