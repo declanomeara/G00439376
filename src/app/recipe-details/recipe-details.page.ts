@@ -64,7 +64,6 @@ export class RecipeDetailsPage {
       }
       
     }
-    console.log(this.recipeDetail);
   }
 
    async toggleFavourite(){
