@@ -1,13 +1,29 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
-    <ion-title>Settings</ion-title>
+    <ion-buttons>
+      <ion-back-button defaultHref="/home"></ion-back-button>
+      <ion-title>Settings</ion-title>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <p>Display Receipe Measurements In:</p>
-  <ion-radio-group [(ngModel)]="measureType" (ionChange)="setSelected()">
-  <ion-radio  value="metric" >Metric</ion-radio><br />
-  <ion-radio  value="us">US</ion-radio><br />
-</ion-radio-group>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Display Receipe Measurements In:</ion-label>
+    </ion-list-header>
+    <ion-radio-group [(ngModel)]="measureType" (ionChange)="setSelected()">
+    <ion-item>
+      <ion-label>Metric</ion-label>
+      <ion-radio slot="start" value="metric"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>US</ion-label>
+      <ion-radio slot="start" value="us"></ion-radio>
+    </ion-item>
+    </ion-radio-group>
+  </ion-list>
 </ion-content>
+
+
