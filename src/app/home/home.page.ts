@@ -30,7 +30,7 @@ export class HomePage {
     addIcons({ heart, settings }/*get icons on creation of page*/);
   }
 
-  async getReceipesByIngredients() {
+  async getRecipesByIngredients() {
 
     if (!this.ingredientRequest || this.ingredientRequest.trim() === "") {
       this.recipeInfo = [];
