@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonList, IonItem, IonThumbnail, IonLabel, IonCardTitle, IonCardSubtitle, IonCardContent, IonImg, IonButton, IonIcon } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonList, IonItem, IonThumbnail, IonLabel, IonCardTitle, IonCardSubtitle, IonCardContent, IonImg, IonButton, IonIcon, IonButtons, IonBackButton, IonListHeader } from '@ionic/angular/standalone';
 import { MyDataService } from '../services/my-data.service';
 import { MyHttpService } from '../services/my-http.service';
 import { HttpOptions } from '@capacitor/core';
@@ -13,7 +13,7 @@ import { heart, heartOutline } from 'ionicons/icons';
   templateUrl: './recipe-details.page.html',
   styleUrls: ['./recipe-details.page.scss'],
   standalone: true,
-  imports: [IonContent, CommonModule, FormsModule, IonList, IonItem, IonLabel, IonCard, IonCardHeader, IonCardSubtitle, IonCardContent, IonImg, IonHeader, IonToolbar, IonTitle, IonButton, IonIcon]
+  imports: [IonContent, CommonModule, FormsModule, IonList, IonItem, IonLabel, IonCard, IonCardHeader, IonCardSubtitle, IonCardContent, IonImg, IonHeader, IonToolbar, IonTitle, IonButton, IonIcon, IonButtons, IonBackButton, IonListHeader]
 })
 export class RecipeDetailsPage {
 
@@ -62,7 +62,9 @@ export class RecipeDetailsPage {
         this.isFavourite = true;
         break;
       }
+      
     }
+    console.log(this.recipeDetail);
   }
 
    async toggleFavourite(){

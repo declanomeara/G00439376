@@ -1,6 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
-    <ion-title>{{ recipeDetail?.title }}</ion-title>
+    <ion-buttons>
+      <ion-back-button defaultHref="/home"></ion-back-button>
+      <ion-title>{{ recipeDetail?.title }}</ion-title>
+    </ion-buttons>
+    
   </ion-toolbar>
 </ion-header>
 
@@ -10,7 +14,9 @@
   <ng-container *ngIf="recipeDetail">
 
     <!-- INGREDIENTS -->
-    <h2>Ingredients</h2>
+    <ion-list-header>
+      <ion-label>Ingredients</ion-label>
+    </ion-list-header>
 
     <ion-card *ngFor="let ingredient of recipeDetail.extendedIngredients">
 
@@ -42,7 +48,9 @@
     </ion-card>
 
     <!-- INSTRUCTIONS -->
-    <h2>Instructions</h2>
+    <ion-list-header>
+      <ion-label>Instructions</ion-label>
+    </ion-list-header>
 
     <ion-list *ngIf="recipeDetail.analyzedInstructions?.length > 0">
 
