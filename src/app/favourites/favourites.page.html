@@ -1,6 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
-    <ion-title>Favourite Recipies</ion-title>
+    <ion-buttons>
+      <ion-back-button defaultHref="/home"></ion-back-button>
+      <ion-title>Favourite Recipies</ion-title>
+    </ion-buttons>
     <ion-buttons slot="end">
       <ion-button color="danger" (click)="clearAllFavourites()">
         <ion-icon slot="icon-only" name="trash"></ion-icon>
@@ -19,7 +22,10 @@
     <ion-button (click)="viewDetails(favRecipe)">Details</ion-button> 
   </ion-card>
 
-  <p *ngIf="favourites.length === 0">
-    No favourites saved yet.
-  </p>
+  <div *ngIf="favourites.length === 0" class="empty-state">
+  <ion-icon name="heart-outline"></ion-icon>
+  <p>No favourites saved yet</p>
+  <small>Add recipes to favourites to see them here</small>
+</div>
+
 </ion-content>

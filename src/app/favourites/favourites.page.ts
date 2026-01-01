@@ -1,25 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonButton, IonCardTitle, IonButtons, IonIcon } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonButton, IonCardTitle, IonButtons, IonIcon, IonBackButton } from '@ionic/angular/standalone';
 import { MyDataService } from '../services/my-data.service';
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
-import { trash } from 'ionicons/icons';
+import { heartOutline, trash } from 'ionicons/icons';
 
 @Component({
   selector: 'app-favourites',
   templateUrl: './favourites.page.html',
   styleUrls: ['./favourites.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonCardHeader, IonButton, IonCardTitle, IonButtons, IonIcon]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonCardHeader, IonButton, IonCardTitle, IonButtons, IonIcon, IonBackButton]
 })
 export class FavouritesPage  {
   
   favourites: any[] =[];
 
   constructor(private ds: MyDataService, private router: Router) { 
-    addIcons({trash});
+    addIcons({trash, heartOutline});
   }
 
   async ionViewWillEnter() {
